@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web Components | CSR (Client side rendering Webcomponents, Needs Javascript)</title>
+    </head>
+    <body>
+        <custom-paragraph text="Custom Paragraph"></custom-paragraph>
+    </body>
+    <script>
+         class CustomParagraph extends HTMLElement {
+            template = document.createElement("template");
+
+            constructor() {
+                super();
+                const text = this.getAttribute('text'); 
+                this.attachShadow({ mode: "open" });
+                this.template.innerHTML = `
+                <style> 
+                    p { 
+                        font-size: 65px; 
+                        font-weight: 400; 
+                        font-style: italic;
+                        background-image: linear-gradient(to left, #007f4c, #53e3a7); 
+                        color: black; 
+                    } 
+                </style> 
+                <p>${text}</p>
+                `;
+                this.render();
+            }
+
+            render() {
+                this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+            }
+        }
+
+        customElements.define("custom-paragraph", CustomParagraph);
+  </script>
+</html>
