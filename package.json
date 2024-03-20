@@ -9,7 +9,8 @@
   "keywords": [
     "SSR",
     "CSR",
-    "Declarative shadow DOM"
+    "Client Side Rendering",
+    "Web components"
   ],
   "author": "Pradeep Kumar Saraswathi",
   "dependencies": {
